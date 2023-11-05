@@ -152,3 +152,36 @@ class KTHDataset(Dataset):
         sequence = sequence[best_indices]
 
         return sequence, label
+
+
+
+# For using yolo...
+
+# yolo = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
+
+# res = yolo(img)
+# if len(res.xyxy[0].tolist()) != 0:
+    # box = res.xyxy[0].tolist()[0]
+    # label_ = res.names[int(box[-1])]
+
+    # former_y, former_x = img.shape[0], img.shape[1]
+    # change = False
+    # crop_params = {
+    # 'xmin' : 0,
+    # 'ymin' : 0,
+    # 'xmax' : former_x,
+    # 'ymax' : former_y
+    # }
+
+    # if label_ == 'person' and ((box[0] < box[2] and box[1] < box[3]) and (box[0] > 0 and box[1] > 0 and box[2] < img.shape[0] and box[3] < img.shape[1])):
+        # xmin, ymin, xmax, ymax = box[0], box[1], box[2], box[3]
+        # crop_params['xmin'] = max(0, int(xmin))
+        # crop_params['ymin'] = max(0, int(ymin))
+        # crop_params['xmax'] = min(former_x, int(xmax))
+        # crop_params['ymax'] = min(former_y, int(ymax))
+        # change = True
+
+    # if change:
+        # img = img[crop_params['ymin']:crop_params['ymax'], crop_params['xmin']:crop_params['xmax'], :]
+
+    # img = cv2.resize(img, (former_x,former_y))
